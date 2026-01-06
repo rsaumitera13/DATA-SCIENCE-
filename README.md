@@ -115,3 +115,65 @@ ridge = Ridge(alpha=1.0)
 ridge.fit(X_train_scaled, y_train)
 y_pred_ridge = ridge.predict(X_test_scaled)
 print_metrics(y_test, y_pred_ridge, "Ridge Regression")
+
+
+--- Data Information ---
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 1436 entries, 0 to 1435
+Data columns (total 11 columns):
+ #   Column     Non-Null Count  Dtype 
+---  ------     --------------  ----- 
+ 0   Price      1436 non-null   int64 
+ 1   Age_08_04  1436 non-null   int64 
+ 2   KM         1436 non-null   int64 
+ 3   Fuel_Type  1436 non-null   object
+ 4   HP         1436 non-null   int64 
+ 5   Automatic  1436 non-null   int64 
+ 6   cc         1436 non-null   int64 
+ 7   Doors      1436 non-null   int64 
+ 8   Cylinders  1436 non-null   int64 
+ 9   Gears      1436 non-null   int64 
+ 10  Weight     1436 non-null   int64 
+dtypes: int64(10), object(1)
+memory usage: 123.5+ KB
+None
+
+--- Summary Statistics ---
+              Price    Age_08_04             KM           HP    Automatic  \
+...
+75%     1600.00000     5.000000        4.0     5.000000  1085.00000  
+max    16000.00000     5.000000        4.0     6.000000  1615.00000  
+
+Dropping 'Cylinders' column (constant value).
+
+-- Model 1 (All Features) ---
+R-Squared: 0.8349
+RMSE:      1484.2654
+
+--- Model 2 (Selected Features) ---
+R-Squared: 0.8506
+RMSE:      1411.8502
+
+--- Model 3 (Standardized) ---
+R-Squared: 0.8349
+RMSE:      1484.2654
+
+--- Coefficients (Model 1) ---
+            Feature  Coefficient
+9  Fuel_Type_Petrol  1370.808910
+6             Gears   551.600710
+3         Automatic   148.830927
+7            Weight    25.884958
+2                HP    14.039479
+1                KM    -0.016231
+4                cc    -0.030372
+5             Doors   -60.310974
+8  Fuel_Type_Diesel   -68.548757
+0         Age_08_04  -120.830458
+...
+
+--- Ridge Regression ---
+R-Squared: 0.8350
+RMSE:      1483.5575
+
+
